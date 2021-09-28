@@ -20,3 +20,15 @@ void Timer::startTimer() {
     }
     std::this_thread::sleep_for(std::chrono::seconds(1));
 }
+
+void Timer::notify() {
+    observer->update();
+}
+
+void Timer::subscribeObserver(Observer *newObserver) {
+    observer = newObserver;
+}
+
+void Timer::unsubscribeObserver(Observer *oldObserver) {
+    delete observer;
+}

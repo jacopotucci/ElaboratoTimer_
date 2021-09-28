@@ -20,12 +20,13 @@ public:
 
     void notify() override;
 
-    void subscribeObserver(Observer* o) override;
+    void subscribeObserver(Observer* newObserver) override;
 
-    void unsubscribeObserver(Observer* o) override;
+    void unsubscribeObserver(Observer* oldObserver) override;
 
 private:
     Ora o;
+    Observer* observer;
 };
 
 
