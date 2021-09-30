@@ -10,7 +10,7 @@
 
 class Ora {
 public:
-    explicit Ora(int s = 0, int m = 0, int o = 0) : secondi(s), minuti(m), ore(o) {}
+    explicit Ora(int s = 0, int m = 0, int o = 0, int v = 0) : secondi(s), minuti(m), ore(o), visualizzazione(v) {}
 
     ~Ora() = default;
 
@@ -38,12 +38,16 @@ public:
         Ora::ore = ore;
     }
 
+    void setVisualizzazione(int visualizzazione) {
+        Ora::visualizzazione = visualizzazione;
+    }
+
     void setOraAttuale();
 
-    std::string oraToString(); //trasforma l'ora in una stringa da passare al display
+    std::string oraToString() const; //trasforma l'ora in una stringa da passare al display
 
 private:
-    int secondi, minuti, ore;
+    int secondi, minuti, ore, visualizzazione;
 };
 
 
