@@ -12,11 +12,15 @@
 
 class Timer : public Subject{
 public:
-    explicit Timer(int s = 5) : o(s) {}
+    explicit Timer(int s = 5);
 
-    ~Timer() = default;
+    ~Timer() override;
 
     void startTimer();
+
+    std::string getStringTimer() const;
+
+    const Ora &getO() const { return o; }
 
     void notify() override;
 

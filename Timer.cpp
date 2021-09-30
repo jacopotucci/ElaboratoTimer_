@@ -4,6 +4,14 @@
 
 #include "Timer.h"
 
+Timer::Timer(int s) {
+    o = Ora(s);
+    observer = nullptr;
+}
+Timer::~Timer() {
+    delete observer;
+}
+
 void Timer::startTimer() {
     if(o.getSecondi() != 0)
         o.setSecondi(o.getSecondi() - 1);
@@ -19,6 +27,7 @@ void Timer::startTimer() {
         }
     }
     std::this_thread::sleep_for(std::chrono::seconds(1));
+    notify();
 }
 
 void Timer::notify() {
@@ -32,3 +41,11 @@ void Timer::subscribeObserver(Observer *newObserver) {
 void Timer::unsubscribeObserver(Observer *oldObserver) {
     delete observer;
 }
+
+std::string Timer::getStringTimer() const {
+    std::string stringTimer = o.oraToString();
+    return stringTimer;
+}
+
+
+
