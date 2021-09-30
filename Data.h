@@ -10,7 +10,7 @@
 
 class Data {
 public:
-    Data() = default;
+    explicit Data(int g = 0, int m = 0, int a = 0, int v = 0) : giorni(g), mesi(m), anni(a), visualizzazione(v) {}
 
     ~Data() = default;
 
@@ -18,32 +18,32 @@ public:
         return giorni;
     }
 
-    void setGiorni(int giorni) {
-        Data::giorni = giorni;
+    void setGiorni(int g) {
+        Data::giorni = g;
     }
 
     int getMesi() const {
         return mesi;
     }
 
-    void setMesi(int mesi) {
-        Data::mesi = mesi;
+    void setMesi(int m) {
+        Data::mesi = m;
     }
 
     int getAnni() const {
         return anni;
     }
 
-    void setAnni(int anni) {
-        Data::anni = anni;
+    void setAnni(int a) {
+        Data::anni = a;
     }
 
     void setDataAttuale(); //imposta la data di oggi
 
-    std::string dataToString(); //trasforma la data in una stringa da passare al display
+    std::string dataToString() const; //trasforma la data in una stringa da passare al display
 
 private:
-    int giorni, mesi, anni;
+    int giorni, mesi, anni, visualizzazione;
 
 };
 
