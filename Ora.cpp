@@ -37,3 +37,10 @@ std::string Ora::oraToString() const{
     }
     return oraString;
 }
+
+int Ora::turnToSecond() {
+    int secondiTotali = secondi;
+    secondiTotali += (minuti*60);
+    secondiTotali += (ore*60*60);
+    return secondiTotali;
+}
