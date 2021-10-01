@@ -8,6 +8,7 @@
 #include "Subject.h"
 #include "Ora.h"
 #include <thread>
+#include <ctime>
 #include <chrono>
 
 class Timer : public Subject{
@@ -16,7 +17,9 @@ public:
 
     ~Timer() override;
 
-    void startTimer();
+    void decr();
+
+    void start();
 
     std::string getStringTimer() const;
 

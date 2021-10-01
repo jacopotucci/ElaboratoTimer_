@@ -11,7 +11,7 @@
 
 class TimerObserver : public Observer{
 public:
-    TimerObserver();
+    explicit TimerObserver(Timer* t);
 
     ~TimerObserver() override;
 

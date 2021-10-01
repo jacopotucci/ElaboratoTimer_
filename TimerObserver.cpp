@@ -4,16 +4,19 @@
 
 #include "TimerObserver.h"
 
-TimerObserver::TimerObserver() {
+TimerObserver::TimerObserver(Timer* t) {
+    subject = t;
     subject->subscribeObserver(this);
 }
 
 TimerObserver::~TimerObserver() {
     subject->unsubscribeObserver(this);
+    delete subject;
 }
 
 void TimerObserver::update() {
     oraTimer = subject->getO();
     oraStringTimer = oraTimer.oraToString();
 }
+
 
