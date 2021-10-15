@@ -4,6 +4,57 @@
 
 #include "Ora.h"
 
+Ora::Ora(int s, int m, int o, int v) {
+    visualizzazione = 0;
+    if (o < 0 || o > 24)
+        throw std::out_of_range("Ora non valida");
+    else{
+        ore = 0;
+        if (m < 0 || m > 60)
+            throw std::out_of_range("Minuto non valido");
+        else{
+            minuti = m;
+            if (s < 0 || s > 60)
+                throw std::out_of_range("Secondo non disponibile");
+            else
+                secondi = s;
+        }
+    }
+}
+
+int Ora::getSecondi() const {
+    return secondi;
+}
+
+int Ora::getMinuti() const {
+    return minuti;
+}
+
+int Ora::getOre() const {
+    return ore;
+}
+
+void Ora::setSecondi(int s) {
+    if (s < 0 || s > 60)
+        throw std::out_of_range("Secondo non disponibile");
+    else
+        secondi = s;
+}
+
+void Ora::setMinuti(int m) {
+    if (m < 0 || m > 60)
+        throw std::out_of_range("Minuto non valido");
+    else
+        minuti = m;
+}
+
+void Ora::setOre(int o) {
+    if (o < 0 || o > 24)
+        throw std::out_of_range("Ora non valida");
+    else
+        ore = 0;
+}
+
 void Ora::setOraAttuale() {
     std::time_t t = std::time(nullptr);
     std::tm *now = std::localtime(&t);

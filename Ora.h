@@ -7,36 +7,25 @@
 
 #include <string>
 #include <ctime>
+#include <stdexcept>
 
 class Ora {
 public:
-    explicit Ora(int s = 0, int m = 0, int o = 0, int v = 0) : secondi(s), minuti(m), ore(o), visualizzazione(v) {}
+    explicit Ora(int s = 10, int m = 10, int o = 10, int v = 0);
 
     ~Ora() = default;
 
-    int getSecondi() const {
-        return secondi;
-    }
+    int getSecondi() const;
 
-    void setSecondi(int secondi) {
-        Ora::secondi = secondi;
-    }
+    int getMinuti() const;
 
-    int getMinuti() const {
-        return minuti;
-    }
+    int getOre() const;
 
-    void setMinuti(int minuti) {
-        Ora::minuti = minuti;
-    }
+    void setSecondi(int secondi);
 
-    int getOre() const {
-        return ore;
-    }
+    void setMinuti(int minuti);
 
-    void setOre(int ore) {
-        Ora::ore = ore;
-    }
+    void setOre(int ore);
 
     void setVisualizzazione(int visualizzazione) {
         Ora::visualizzazione = visualizzazione;
