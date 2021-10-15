@@ -7,36 +7,25 @@
 
 #include <string>
 #include <ctime>
+#include <stdexcept>
 
 class Data {
 public:
-    explicit Data(int g = 0, int m = 0, int a = 0, int v = 0) : giorni(g), mesi(m), anni(a), visualizzazione(v) {}
+    explicit Data(int g = 10, int m = 10, int a = 2010, int v = 0);
 
     ~Data() = default;
 
-    int getGiorni() const {
-        return giorni;
-    }
+    int getGiorni() const;
 
-    void setGiorni(int g) {
-        Data::giorni = g;
-    }
+    int getMesi() const;
 
-    int getMesi() const {
-        return mesi;
-    }
+    int getAnni() const;
 
-    void setMesi(int m) {
-        Data::mesi = m;
-    }
+    void setGiorni(int g);
 
-    int getAnni() const {
-        return anni;
-    }
+    void setMesi(int m);
 
-    void setAnni(int a) {
-        Data::anni = a;
-    }
+    void setAnni(int a);
 
     void setDataAttuale(); //imposta la data di oggi
 
@@ -44,6 +33,8 @@ public:
 
 private:
     int giorni, mesi, anni, visualizzazione;
+
+    void controlloGiorno(int g = 10);
 
 };
 
