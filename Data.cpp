@@ -83,11 +83,58 @@ void Data::setDataAttuale() {
     setAnni(now->tm_year + 1900);
 }
 
+std::string Data::giornoEMeseAttualeToString() const{
+    std::time_t t = std::time(nullptr);
+    std::tm *now = std::localtime(&t);
+    std::string giornoEMese = std::to_string(now->tm_wday);
+    giornoEMese += " " + std::to_string(now->tm_mday);
+    switch (now->tm_mon){
+        case 0:
+            giornoEMese += " Gennaio";
+            break;
+        case 1:
+            giornoEMese += " Febbraio";
+            break;
+        case 2:
+            giornoEMese += " Marzo";
+            break;
+        case 3:
+            giornoEMese += " Aprile";
+            break;
+        case 4:
+            giornoEMese += " Maggio";
+            break;
+        case 5:
+            giornoEMese += " Giugno";
+            break;
+        case 6:
+            giornoEMese += " Luglio";
+            break;
+        case 7:
+            giornoEMese += " Agosto";
+            break;
+        case 8:
+            giornoEMese += " Settembre";
+            break;
+        case 9:
+            giornoEMese += " Ottobre";
+            break;
+        case 10:
+            giornoEMese += " Novembre";
+            break;
+        case 11:
+            giornoEMese += " Dicembre";
+            break;
+    }
+    return giornoEMese;
+}
+
 std::string Data::dataToString() const{
     std::string controlloData, dataString;
         switch (visualizzazione) {
             case 1:
-                // giorni settimana, mesi scritti
+                dataString += giornoEMeseAttualeToString();
+                dataString += " " + std::to_string(anni);
                 break;
             case 2:
                 dataString += " giorno: " + std::to_string(giorni);

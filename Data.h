@@ -29,6 +29,8 @@ public:
 
     void setDataAttuale(); //imposta la data di oggi
 
+    std::string giornoEMeseAttualeToString() const;
+
     std::string dataToString() const; //trasforma la data in una stringa da passare al display
 
 private:
