@@ -4,53 +4,54 @@
 
 #include "Timer.h"
 
-Timer::Timer(int s) {
-    o = Ora(s);
-    observer = nullptr;
-}
-Timer::~Timer() {
-    delete observer;
+void Timer::setTimer(int o, int m, int s) {
+    ora->setOre(o);
+    ora->setMinuti(m);
+    ora->setSecondi(s);
 }
 
-void Timer::decr() {
-        if (o.getSecondi() != 0)
-            o.setSecondi(o.getSecondi() - 1);
-        else {
-            if (o.getMinuti() != 0) {
-                o.setMinuti(o.getMinuti() - 1);
-                o.setSecondi(59);
-            } else {
-                if (o.getOre() != 0) {
-                    o.setOre(o.getOre() - 1);
-                    o.setMinuti(59);
-                }
-            }
-        }
+void Timer::startTimer() {
+    while (ora->getSecondi() > 0){
+        sleep(1);
         notify();
+        ora->setSecondi(ora->getSecondi() - 1);
+        if (ora->getSecondi() == 0){
+            sleep(1);
+            notify();
+        }
+        else if (ora->getSecondi() == 0 && ora->getMinuti() != 0){
+            ora->setSecondi(59);
+            ora->setMinuti(ora->getMinuti() - 1);
+        }
+        else if(ora->getMinuti() == 0 && ora->getSecondi() == 0 && ora->getOre() != 0){
+            ora->setMinuti(59);
+            ora->setSecondi(59);
+            ora->setOre(ora->getOre() - 1);
+        }
+    }
 }
 
-void Timer::start(){
-    std::this_thread::sleep_for(std::chrono::seconds(1));
-    std::thread t(&Timer::start, this);
-    t.join();
+int Timer::getOraTimer() {
+    return ora->getOre();
+}
+
+int Timer::getMinutoTimer() {
+    return ora->getMinuti();
+}
+
+int Timer::getSecondiTimer() {
+    return ora->getSecondi();
+}
+
+void Timer::subscribeObserver(Observer *o) {
+    observers.push_back(o);
+}
+
+void Timer::unsubscribeObserver(Observer *o) {
+    observers.remove(o);
 }
 
 void Timer::notify() {
-    observer->update();
+    for (auto& elem : observers)
+        elem->update();
 }
-
-void Timer::subscribeObserver(Observer *newObserver) {
-    observer = newObserver;
-}
-
-void Timer::unsubscribeObserver(Observer *oldObserver) {
-    delete observer;
-}
-
-std::string Timer::getStringTimer() const {
-    std::string stringTimer = o.oraToString();
-    return stringTimer;
-}
-
-
-

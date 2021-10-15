@@ -5,36 +5,35 @@
 #ifndef ELABORATOTIMER__TIMER_H
 #define ELABORATOTIMER__TIMER_H
 
-#include "Subject.h"
+#include <unistd.h>
 #include "Ora.h"
-#include <thread>
-#include <ctime>
-#include <chrono>
+#include "Observer.h"
+#include "Subject.h"
+#include <list>
 
 class Timer : public Subject{
 public:
-    explicit Timer(int s = 5);
+    explicit Timer(Ora* o): ora(o){}
 
-    ~Timer() override;
+    void setTimer(int o, int m, int s);
 
-    void decr();
+    void startTimer();
 
-    void start();
+    int getOraTimer();
 
-    std::string getStringTimer() const;
+    int getMinutoTimer();
 
-    const Ora &getO() const { return o; }
+    int getSecondiTimer();
+
+    void subscribeObserver(Observer* o) override;
+
+    void unsubscribeObserver(Observer* o) override;
 
     void notify() override;
 
-    void subscribeObserver(Observer* newObserver) override;
-
-    void unsubscribeObserver(Observer* oldObserver) override;
-
 private:
-    Ora o;
-    Observer* observer;
+   Ora* ora = new Ora();
+   std::list<Observer*> observers;
 };
-
 
 #endif //ELABORATOTIMER__TIMER_H

@@ -10,7 +10,7 @@ class Observer;
 
 class Subject {
 public:
-    virtual ~Subject() {}
+    virtual ~Subject() = default;
 
     virtual void subscribeObserver(Observer* o) = 0;
 
