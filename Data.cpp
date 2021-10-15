@@ -91,7 +91,30 @@ void Data::setVisualizzazione(int v) {
 std::string Data::giornoEMeseAttualeToString() const{
     std::time_t t = std::time(nullptr);
     std::tm *now = std::localtime(&t);
-    std::string giornoEMese = std::to_string(now->tm_wday);
+    std::string giornoEMese;
+    switch (now->tm_wday) {
+        case 1:
+            giornoEMese += "Lunedi'";
+            break;
+        case 2:
+            giornoEMese += "Martedi'";
+            break;
+        case 3:
+            giornoEMese += "Mercoledi'";
+            break;
+        case 4:
+            giornoEMese += "Giovedi''";
+            break;
+        case 5:
+            giornoEMese += "Venerdi";
+            break;
+        case 6:
+            giornoEMese += "Sabato";
+            break;
+        default:
+            giornoEMese += "Domenica";
+            break;
+    }
     giornoEMese += " " + std::to_string(now->tm_mday);
     switch (now->tm_mon){
         case 0:
