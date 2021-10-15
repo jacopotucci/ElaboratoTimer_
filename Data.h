@@ -27,6 +27,8 @@ public:
 
     void setAnni(int a);
 
+    void setVisualizzazione(int v);
+
     void setDataAttuale(); //imposta la data di oggi
 
     std::string giornoEMeseAttualeToString() const;

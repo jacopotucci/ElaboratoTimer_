@@ -12,6 +12,13 @@ TEST(Data, CostruttoreData){
     ASSERT_EQ(2010, data.getAnni());
 }
 
+TEST(Data, CostruttoreDefaultData){
+Data data;
+ASSERT_EQ(10, data.getGiorni());
+ASSERT_EQ(10, data.getMesi());
+ASSERT_EQ(2010, data.getAnni());
+}
+
 TEST(Data, CostruttoreDataFebbraioBisestile){
     Data data(29, 2, 2000);
     ASSERT_EQ(29, data.getGiorni());
@@ -70,4 +77,21 @@ TEST(Data, eccezioneSetMesi){
 TEST(Data, eccezioneSetAnni){
     Data data(10, 10, 2010);
     ASSERT_THROW(data.setAnni(-1), std::out_of_range);
+}
+
+TEST(Data, setDataAttuale){
+    std::time_t t = std::time(nullptr);
+    std::tm *now = std::localtime(&t);
+    Data data;
+    data.setDataAttuale();
+    ASSERT_EQ(now->tm_mday, data.getGiorni());
+    ASSERT_EQ(now->tm_mon, data.getMesi());
+    ASSERT_EQ(now->tm_year + 1900, data.getAnni());
+}
+
+TEST(Data, dataToString){
+    Data data;
+    ASSERT_EQ("10 / 10 / 2010", data.dataToString());
+    data.setVisualizzazione(2);
+    ASSERT_EQ(" giorno: 10 mese: 10 anno: 2010", data.dataToString());
 }

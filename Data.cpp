@@ -59,6 +59,7 @@ int Data::getAnni() const {
 
 void Data::setGiorni(int g) {
     controlloGiorno(g);
+    giorni = g;
 }
 
 void Data::setMesi(int m) {
@@ -81,6 +82,10 @@ void Data::setDataAttuale() {
     setGiorni(now->tm_mday);
     setMesi(now->tm_mon);
     setAnni(now->tm_year + 1900);
+}
+
+void Data::setVisualizzazione(int v) {
+    Data::visualizzazione = v;
 }
 
 std::string Data::giornoEMeseAttualeToString() const{
