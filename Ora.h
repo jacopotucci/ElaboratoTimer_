@@ -27,9 +27,7 @@ public:
 
     void setOre(int ore);
 
-    void setVisualizzazione(int visualizzazione) {
-        Ora::visualizzazione = visualizzazione;
-    }
+    void setVisualizzazione(int v);
 
     void setOraAttuale();
 

@@ -9,7 +9,7 @@ Ora::Ora(int s, int m, int o, int v) {
     if (o < 0 || o > 24)
         throw std::out_of_range("Ora non valida");
     else{
-        ore = 0;
+        ore = o;
         if (m < 0 || m > 60)
             throw std::out_of_range("Minuto non valido");
         else{
@@ -52,7 +52,11 @@ void Ora::setOre(int o) {
     if (o < 0 || o > 24)
         throw std::out_of_range("Ora non valida");
     else
-        ore = 0;
+        ore = o;
+}
+
+void Ora::setVisualizzazione(int v) {
+    visualizzazione = v;
 }
 
 void Ora::setOraAttuale() {
