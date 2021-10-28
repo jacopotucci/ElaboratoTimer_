@@ -13,7 +13,9 @@
 
 class Timer : public Subject{
 public:
-    explicit Timer(Ora* o): ora(o){}
+    explicit Timer(): ora(10){}
+
+    ~Timer() override = default;
 
     void setTimer(int o, int m, int s);
 
@@ -32,7 +34,7 @@ public:
     void notify() override;
 
 private:
-   Ora* ora = new Ora();
+   Ora ora;
    std::list<Observer*> observers;
 };
 
