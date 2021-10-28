@@ -37,6 +37,7 @@ private:
     int sec, min, ore;
     bool info, fine;
     int altezza, larghezza, altezzaTerminale, larghezzaTerminale;
+    std::string oraString, dataString, timerString;
 
     WINDOW* timerWindow = nullptr;
     WINDOW* dataWindow = nullptr;

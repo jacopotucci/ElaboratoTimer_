@@ -43,6 +43,24 @@ void Display::inizio() {
 void Display::aggiornaDisplay() {
     prendiTasto();
     erase();
+
+    werase(timerWindow);
+    werase(oraWindow);
+    werase(dataWindow);
+    wborder(timerWindow, 0, 0, 0, 0, 0, 0, 0, 0);
+    wborder(oraWindow, 0, 0, 0, 0, 0, 0, 0, 0);
+    wborder(dataWindow, 0, 0, 0, 0, 0, 0, 0, 0);
+
+    mvwprintw(timerWindow, 2, 10, "TIMER");
+    mvwprintw(oraWindow, 2, 10, "ORA");
+    mvwprintw(dataWindow, 2, 10, "DATA");
+
+    ora.setOraAttuale();
+    oraString = ora.oraToString();
+
+    data.setDataAttuale();
+    dataString = data.dataToString();
+
     napms(50);
 }
 
