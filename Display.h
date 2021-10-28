@@ -22,6 +22,8 @@ public:
 
     void prendiTasto();
 
+    void stampaInformazioni();
+
     void update() override;
 
     void attach() override;
@@ -34,6 +36,12 @@ private:
     Timer* subject;
     int sec, min, ore;
     bool info, fine;
+    int altezza, larghezza, altezzaTerminale, larghezzaTerminale;
+
+    WINDOW* timerWindow = nullptr;
+    WINDOW* dataWindow = nullptr;
+    WINDOW* oraWindow = nullptr;
+    WINDOW* istruzioniWindow = nullptr;
 };
 
 #endif //ELABORATOTIMER__DISPLAY_H

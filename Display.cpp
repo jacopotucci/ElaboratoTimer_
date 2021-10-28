@@ -9,6 +9,7 @@ Display::Display(Timer *tm) : subject(tm) {
     data = Data();
     ora = Ora();
     info = fine = false;
+    altezza = larghezza = altezzaTerminale = larghezzaTerminale = 0;
     Display::attach();
 }
 Display::~Display() {
@@ -17,9 +18,20 @@ Display::~Display() {
 
 void Display::inizio() {
     initscr();
+    curs_set(0);
 
     keypad(stdscr, true);
     nodelay(stdscr, true);
+
+    altezzaTerminale = getmaxy(stdscr);
+    larghezzaTerminale = getmaxx(stdscr);
+    altezza = 10;
+    larghezza = 27;
+
+    timerWindow = newwin(altezza, larghezza, (altezzaTerminale-altezza*2)/2, (larghezzaTerminale - larghezza*3)/2 + 2*larghezza - altezza);
+    oraWindow = newwin(altezza, larghezza, (altezzaTerminale-altezza*2)/2, (larghezzaTerminale- larghezza*3)/2 + 2);
+    dataWindow = newwin(altezza, larghezza, (altezzaTerminale - altezza*2)/2 + altezza, (larghezzaTerminale- larghezza*3)/2 + 2);
+    refresh();
 
     do{
         aggiornaDisplay();
@@ -44,6 +56,10 @@ void Display::prendiTasto() {
         default:
             break;
     }
+}
+
+void Display::stampaInformazioni() {
+
 }
 
 void Display::attach() {
