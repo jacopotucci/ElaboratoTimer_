@@ -9,6 +9,7 @@
 #include "Data.h"
 #include "Observer.h"
 #include <ncurses.h>
+#include <thread>
 
 class Display : public Observer{
 public:
@@ -23,6 +24,8 @@ public:
     void prendiTasto();
 
     void stampaInformazioni();
+
+    void oraTimerToString();
 
     void update() override;
 

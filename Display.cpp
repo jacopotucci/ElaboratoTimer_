@@ -61,6 +61,19 @@ void Display::aggiornaDisplay() {
     data.setDataAttuale();
     dataString = data.dataToString();
 
+    update();
+
+    oraTimerToString();
+
+
+    mvwprintw(oraWindow, 5, (larghezza - oraString.length())/2 - 1, &oraString[0]);
+    mvwprintw(dataWindow, 5, (larghezza - dataString.length())/2 - 1, &dataString[0]);
+    mvwprintw(timerWindow, 5, (larghezza - timerString.length())/2 - 1, &timerString[0]);
+
+    wrefresh(timerWindow);
+    wrefresh(oraWindow);
+    wrefresh(dataWindow);
+
     napms(50);
 }
 
@@ -80,6 +93,12 @@ void Display::stampaInformazioni() {
 
 }
 
+void Display::oraTimerToString() {
+    timerString = std::to_string(ore);
+    timerString += ":" + std::to_string(min);
+    timerString += ":" + std::to_string(sec);
+}
+
 void Display::attach() {
     subject->subscribeObserver(this);
 }
@@ -93,6 +112,5 @@ void Display::update() {
     this->min = subject->getMinutoTimer();
     this->ore = subject->getOraTimer();
 }
-
 
 
