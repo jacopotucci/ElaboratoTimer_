@@ -13,7 +13,7 @@
 
 class Timer : public Subject{
 public:
-    explicit Timer(): ora(10){}
+    explicit Timer(): ora(10, 0, 0){}
 
     ~Timer() override = default;
 
