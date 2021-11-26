@@ -21,6 +21,8 @@ public:
 
     int getAnni() const;
 
+    int getVisualizazzione() const;
+
     void setGiorni(int g);
 
     void setMesi(int m);

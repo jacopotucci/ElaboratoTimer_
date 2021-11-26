@@ -57,6 +57,10 @@ int Data::getAnni() const {
     return anni;
 }
 
+int Data::getVisualizazzione() const{
+    return visualizzazione;
+}
+
 void Data::setGiorni(int g) {
     controlloGiorno(g);
     giorni = g;
@@ -158,7 +162,7 @@ std::string Data::giornoEMeseAttualeToString() const{
 }
 
 std::string Data::dataToString() const{
-    std::string controlloData, dataString;
+    std::string controlloData , dataString;
         switch (visualizzazione) {
             case 1:
                 dataString += giornoEMeseAttualeToString();
