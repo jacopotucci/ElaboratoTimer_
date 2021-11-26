@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 17)
 
 add_subdirectory(Tests)
 
-set(SOURCE_FILES main.cpp Data.cpp Data.h Ora.cpp Ora.h Timer.cpp Timer.h Observer.h Subject.h TimerObserver.cpp TimerObserver.h Display.cpp Display.h)
+set(SOURCE_FILES main.cpp Data.cpp Data.h Ora.cpp Ora.h Timer.cpp Timer.h Observer.h Subject.h ThreadClass.cpp ThreadClass.h Display.cpp Display.h)
 add_executable(ElaboratoTimer_ main.cpp)
 add_library(core ${SOURCE_FILES})
 target_link_libraries(ElaboratoTimer_ core)
