@@ -34,6 +34,10 @@ int Ora::getOre() const {
     return ore;
 }
 
+int Ora::getVisualizzazione() const {
+    return visualizzazione;
+}
+
 void Ora::setSecondi(int s) {
     if (s < 0 || s > 60)
         throw std::out_of_range("Secondo non disponibile");

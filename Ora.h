@@ -21,6 +21,8 @@ public:
 
     int getOre() const;
 
+    int getVisualizzazione() const;
+
     void setSecondi(int secondi);
 
     void setMinuti(int minuti);
