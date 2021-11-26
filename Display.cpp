@@ -8,6 +8,7 @@ Display::Display(Timer *tm) : subject(tm) {
     min = sec = ore = 0;
     data = Data();
     ora = Ora();
+    thread = new ThreadClass(subject);
     info = fine = false;
     altezza = larghezza = altezzaTerminale = larghezzaTerminale = 0;
     Display::attach();
@@ -31,6 +32,7 @@ void Display::inizio() {
     timerWindow = newwin(altezza, larghezza, (altezzaTerminale-altezza*2)/2, (larghezzaTerminale - larghezza*3)/2 + 2*larghezza - altezza);
     oraWindow = newwin(altezza, larghezza, (altezzaTerminale-altezza*2)/2, (larghezzaTerminale- larghezza*3)/2 + 2);
     dataWindow = newwin(altezza, larghezza, (altezzaTerminale - altezza*2)/2 + altezza, (larghezzaTerminale- larghezza*3)/2 + 2);
+    istruzioniWindow = newwin(altezza, larghezza, (altezzaTerminale-altezza*2)/2 + altezza, (larghezzaTerminale - larghezza*3)/2 + 2*larghezza - altezza);
     refresh();
 
     do{
@@ -62,17 +64,22 @@ void Display::aggiornaDisplay() {
     dataString = data.dataToString();
 
     update();
-
     oraTimerToString();
-
 
     mvwprintw(oraWindow, 5, (larghezza - oraString.length())/2 - 1, &oraString[0]);
     mvwprintw(dataWindow, 5, (larghezza - dataString.length())/2 - 1, &dataString[0]);
     mvwprintw(timerWindow, 5, (larghezza - timerString.length())/2 - 1, &timerString[0]);
 
+
+    if(info){
+        stampaInformazioni();
+    }else
+        mvwprintw(istruzioniWindow, 0, 1, "Premi per istruzioni");
+
     wrefresh(timerWindow);
     wrefresh(oraWindow);
     wrefresh(dataWindow);
+    wrefresh(istruzioniWindow);
 
     napms(50);
 }
@@ -84,13 +91,31 @@ void Display::prendiTasto() {
         case 27:
             fine = true;
             break;
+        case 'i':
+            if(!info)
+                info = true;
+            else
+                info = false;
+            break;
+        case 'd':
+            data.setVisualizzazione((data.getVisualizazzione()+1)%3);
+            break;
+        case 'o':
+            ora.setVisualizzazione((ora.getVisualizzazione()+1)%3);
+            break;
+        case 't':
+            thread->startTimer();
+            break;
+        case 's':
+            thread->stopTimer();
+            break;
         default:
             break;
     }
 }
 
 void Display::stampaInformazioni() {
-
+    mvwprintw(istruzioniWindow, 0, 1, "Start");
 }
 
 void Display::oraTimerToString() {

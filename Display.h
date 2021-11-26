@@ -5,11 +5,10 @@
 #ifndef ELABORATOTIMER__DISPLAY_H
 #define ELABORATOTIMER__DISPLAY_H
 
-#include "Timer.h"
+#include "ThreadClass.h"
 #include "Data.h"
 #include "Observer.h"
 #include <ncurses.h>
-#include <thread>
 
 class Display : public Observer{
 public:
@@ -37,6 +36,7 @@ private:
     Data data;
     Ora ora;
     Timer* subject;
+    ThreadClass* thread;
     int sec, min, ore;
     bool info, fine;
     int altezza, larghezza, altezzaTerminale, larghezzaTerminale;
