@@ -71,6 +71,11 @@ void Display::aggiornaDisplay() {
     mvwprintw(timerWindow, 5, (larghezza - timerString.length())/2 - 1, &timerString[0]);
 
 
+    if(subject->getSecondiTimer()==0) {
+        beep();
+        mvwprintw(timerWindow, 5, 6, "Tempo scaduto");
+    }
+
     if(info){
         stampaInformazioni();
     }else
@@ -115,7 +120,12 @@ void Display::prendiTasto() {
 }
 
 void Display::stampaInformazioni() {
-    mvwprintw(istruzioniWindow, 0, 1, "Start");
+    mvwprintw(istruzioniWindow, 0, 1, "- formato orario: O        "
+                                      "- formato data: D          "
+                                      "- start timer: T           "
+                                      "- stop timer: S            "
+                                      "- incrementa timer: U      "
+                                      "- esci dal programma: ESC");
 }
 
 void Display::oraTimerToString() {

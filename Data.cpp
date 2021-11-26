@@ -169,15 +169,15 @@ std::string Data::dataToString() const{
                 dataString += " " + std::to_string(anni);
                 break;
             case 2:
-                dataString += " giorno: " + std::to_string(giorni);
-                dataString += " mese: " + std::to_string(mesi);
-                dataString += " anno: " + std::to_string(anni);
+                dataString += std::to_string(mesi);
+                dataString += "." + std::to_string(giorni);
+                dataString += "." + std::to_string(anni);
                 break;
             default:
                 controlloData = std::to_string(giorni);
-                dataString += (controlloData.length() == 1) ? ('0'+controlloData) : controlloData;
+                dataString += (controlloData.length() == 1) ? ("0"+controlloData) : controlloData;
                 controlloData = " / " + std::to_string(mesi);
-                dataString += (controlloData.length() == 1) ? ('0'+controlloData) : controlloData;
+                dataString += (controlloData.length() == 1) ? ("0"+controlloData) : controlloData;
                 dataString += " / " + std::to_string(anni);
                 break;
         }

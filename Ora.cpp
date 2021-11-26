@@ -76,22 +76,22 @@ std::string Ora::oraToString() const{
     switch (visualizzazione) {
         case 1:
             controlloOra = std::to_string(ore);
-            oraString += (controlloOra.length() == 1) ? ('0'+controlloOra) : controlloOra;
+            oraString += (controlloOra.length() == 1) ? ("0"+controlloOra) : controlloOra;
             controlloOra = ":" + std::to_string(minuti);
-            oraString += (controlloOra.length() == 1) ? ('0'+controlloOra) : controlloOra;
+            oraString += (controlloOra.length() == 1) ? ("0"+controlloOra) : controlloOra;
             controlloOra = ":" + std::to_string(secondi);
-            oraString += (controlloOra.length() == 1) ? ('0'+controlloOra) : controlloOra;
+            oraString += (controlloOra.length() == 1) ? ("0"+controlloOra) : controlloOra;
             break;
         case 2:
             oraString += std::to_string(ore) + " ore ";
-            oraString += std::to_string(minuti) + " minuti ";
-            oraString += std::to_string(secondi) + " secondi";
+            oraString += std::to_string(minuti) + " min ";
+            oraString += std::to_string(secondi) + " sec";
             break;
         default:
             controlloOra = std::to_string(ore);
-            oraString += (controlloOra.length() == 1) ? ('0'+controlloOra) : controlloOra;
+            oraString += (controlloOra.length() == 1) ? ("0"+controlloOra) : controlloOra;
             controlloOra = "." + std::to_string(minuti);
-            oraString += (controlloOra.length() == 1) ? ('0'+controlloOra) : controlloOra;
+            oraString += (controlloOra.length() == 1) ? ("0"+controlloOra) : controlloOra;
             break;
     }
     return oraString;
