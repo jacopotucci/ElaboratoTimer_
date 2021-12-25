@@ -8,7 +8,6 @@ Display::Display(Timer *tm) : subject(tm) {
     min = sec = ore = 0;
     data = Data();
     ora = Ora();
-    thread = new ThreadClass(subject);
     info = fine = false;
     altezza = larghezza = altezzaTerminale = larghezzaTerminale = 0;
     Display::attach();
@@ -71,7 +70,7 @@ void Display::aggiornaDisplay() {
     mvwprintw(timerWindow, 5, (larghezza - timerString.length())/2 - 1, &timerString[0]);
 
 
-    if(subject->getSecondiTimer()==0) {
+    if(subject->getSecondiTimer()==0 && subject->getMinutoTimer() == 0 && subject->getOraTimer() == 0) {
         beep();
         mvwprintw(timerWindow, 5, 6, "Tempo scaduto");
     }
@@ -79,7 +78,7 @@ void Display::aggiornaDisplay() {
     if(info){
         stampaInformazioni();
     }else
-        mvwprintw(istruzioniWindow, 0, 1, "Premi per istruzioni");
+        mvwprintw(istruzioniWindow, 0, 1, "Premi 'i' per istruzioni");
 
     wrefresh(timerWindow);
     wrefresh(oraWindow);
@@ -109,10 +108,17 @@ void Display::prendiTasto() {
             ora.setVisualizzazione((ora.getVisualizzazione()+1)%3);
             break;
         case 't':
+            thread = new ThreadClass(subject);
             thread->startTimer();
             break;
         case 's':
             thread->stopTimer();
+            break;
+        case 'u':
+            thread->incrementaTimer();
+            break;
+        case 'r':
+            thread->resetTimer();
             break;
         default:
             break;
@@ -125,6 +131,7 @@ void Display::stampaInformazioni() {
                                       "- start timer: T           "
                                       "- stop timer: S            "
                                       "- incrementa timer: U      "
+                                      "- reset timer: R           "
                                       "- esci dal programma: ESC");
 }
 
