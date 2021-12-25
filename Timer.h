@@ -19,6 +19,12 @@ public:
 
     void setTimer(int o, int m, int s);
 
+    void setSecondiTimer(int s);
+
+    void setMinutiTimer(int m);
+
+    void setOreTimer(int o);
+
     void setStop(bool stop);
 
     void startTimer();
@@ -38,7 +44,7 @@ public:
 private:
    Ora ora;
    std::list<Observer*> observers;
-   bool stop = false;
+   bool stop = true;
 };
 
 #endif //ELABORATOTIMER__TIMER_H
