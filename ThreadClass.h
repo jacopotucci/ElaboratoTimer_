@@ -18,6 +18,10 @@ public:
 
     void stopTimer();
 
+    void incrementaTimer();
+
+    void resetTimer();
+
 private:
     Timer* timer;
     std::thread timerThread;
