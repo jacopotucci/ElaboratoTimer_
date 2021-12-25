@@ -23,8 +23,6 @@ public:
 
     void startTimer();
 
-    void stopTimer();
-
     int getOraTimer();
 
     int getMinutoTimer();

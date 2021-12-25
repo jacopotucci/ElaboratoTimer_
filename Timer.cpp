@@ -15,7 +15,7 @@ void Timer::setStop(bool s) {
 }
 
 void Timer::startTimer() {
-    while (ora.getSecondi() > 0){
+    while (ora.getSecondi() > 0 && !stop){
         sleep(1);
         notify();
         ora.setSecondi(ora.getSecondi() - 1);
@@ -33,10 +33,6 @@ void Timer::startTimer() {
             ora.setOre(ora.getOre() - 1);
         }
     }
-}
-
-void Timer::stopTimer(){
-    while(stop){};
 }
 
 int Timer::getOraTimer() {
