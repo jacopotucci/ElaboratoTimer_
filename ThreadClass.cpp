@@ -23,7 +23,15 @@ void ThreadClass::stopTimer(){
 }
 
 void ThreadClass::incrementaTimer(){
-    timer->setTimer(0, 0, timer->getSecondiTimer()+1);
+    if (timer->getSecondiTimer() != 59)
+        timer->setSecondiTimer(timer->getSecondiTimer()+1);
+    else if(timer->getSecondiTimer() == 59 && timer->getMinutoTimer() != 59) {
+        timer->setSecondiTimer(0);
+        timer->setMinutiTimer(timer->getMinutoTimer() + 1);
+    }else{
+        timer->setMinutiTimer(0);
+        timer->setOreTimer(timer->getOraTimer()+1);
+    }
 }
 
 void ThreadClass::resetTimer(){
