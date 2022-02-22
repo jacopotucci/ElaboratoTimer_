@@ -5,7 +5,7 @@
 #include "Ora.h"
 
 Ora::Ora(int s, int m, int o, int v) {
-    visualizzazione = 0;
+    visualizzazione = v;
     if (o < 0 || o > 24)
         throw std::out_of_range("Ora non valida");
     else{
@@ -95,11 +95,4 @@ std::string Ora::oraToString() const{
             break;
     }
     return oraString;
-}
-
-int Ora::turnToSecond() {
-    int secondiTotali = secondi;
-    secondiTotali += (minuti*60);
-    secondiTotali += (ore*60*60);
-    return secondiTotali;
 }

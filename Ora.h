@@ -35,8 +35,6 @@ public:
 
     std::string oraToString() const; //trasforma l'ora in una stringa da passare al display
 
-    int turnToSecond();
-
 private:
     int secondi, minuti, ore, visualizzazione;
 };

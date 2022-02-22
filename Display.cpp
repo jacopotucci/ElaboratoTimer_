@@ -8,6 +8,7 @@ Display::Display(Timer *tm) : subject(tm) {
     min = sec = ore = 0;
     data = Data();
     ora = Ora();
+    thread = new ThreadClass(subject);
     info = fine = false;
     altezza = larghezza = altezzaTerminale = larghezzaTerminale = 0;
     Display::attach();
@@ -112,13 +113,16 @@ void Display::prendiTasto() {
             thread->startTimer();
             break;
         case 's':
-            thread->stopTimer();
+            if (thread != nullptr)
+                thread->stopTimer();
             break;
         case 'u':
-            thread->incrementaTimer();
+            if (thread != nullptr)
+                thread->incrementaTimer();
             break;
         case 'r':
-            thread->resetTimer();
+            if (thread != nullptr)
+                thread->resetTimer();
             break;
         default:
             break;

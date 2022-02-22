@@ -14,6 +14,10 @@ class Display : public Observer{
 public:
     explicit Display(Timer* tm);
 
+    //Display& operator=(const Display&) = delete;
+
+    //Display(const Display&) = delete;
+
     ~Display() override;
 
     void inizio();
@@ -36,7 +40,7 @@ private:
     Data data;
     Ora ora;
     Timer* subject;
-    ThreadClass* thread;
+    ThreadClass* thread{};
     int sec, min, ore;
     bool info, fine;
     int altezza, larghezza, altezzaTerminale, larghezzaTerminale;
