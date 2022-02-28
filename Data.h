@@ -35,7 +35,7 @@ public:
 
     std::string giornoEMeseAttualeToString() const;
 
-    std::string dataToString() const; //trasforma la data in una stringa da passare al display
+    std::string toString() const; //trasforma la data in una stringa da passare al display
 
 private:
     int giorni, mesi, anni, visualizzazione;

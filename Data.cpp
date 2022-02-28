@@ -27,7 +27,8 @@ Data::Data(int g, int m, int a, int v) {
 void Data::controlloGiorno(int g) {
     switch (mesi) {
         case 2:
-            if (g > 29 || ((anni % 400) != 0 && g > 28))
+            if (g > 29 || g < 0 || ((anni % 4) != 0 && g > 28)
+                || ((anni % 4) == 0 && (anni % 100) == 0 && (anni % 400) != 0))
                 throw std::out_of_range("Giorno non valido");
             else
                 giorni = g;
@@ -69,15 +70,19 @@ void Data::setGiorni(int g) {
 void Data::setMesi(int m) {
     if (m > 12 || m < 0)
         throw std::out_of_range("Mese non valido");
-    else
+    else{
         mesi = m;
+        controlloGiorno(giorni);
+    }
 }
 
 void Data::setAnni(int a) {
     if (a > 9999 || a < 0)
         throw std::out_of_range("Anno non valido");
-    else
+    else{
         anni = a;
+        controlloGiorno(giorni);
+    }
 }
 
 void Data::setDataAttuale() {
@@ -161,7 +166,7 @@ std::string Data::giornoEMeseAttualeToString() const{
     return giornoEMese;
 }
 
-std::string Data::dataToString() const{
+std::string Data::toString() const{
     std::string controlloData , dataString;
         switch (visualizzazione) {
             case 1:
