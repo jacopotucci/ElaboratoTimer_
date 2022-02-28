@@ -76,9 +76,9 @@ TEST(Ora, setOraAttuale){
 
 TEST(Ora, OraToString){
     Ora ora;
-    ASSERT_EQ("10.10", ora.oraToString());
+    ASSERT_EQ("10.10", ora.toString());
     ora.setVisualizzazione(1);
-    ASSERT_EQ("10:10:10", ora.oraToString());
+    ASSERT_EQ("10:10:10", ora.toString());
     ora.setVisualizzazione(2);
-    ASSERT_EQ("10 ore 10 min 10 sec", ora.oraToString());
+    ASSERT_EQ("10 ore 10 min 10 sec", ora.toString());
 }
