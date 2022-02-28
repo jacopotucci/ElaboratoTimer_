@@ -85,7 +85,7 @@ TEST(Data, setDataAttuale){
     Data data;
     data.setDataAttuale();
     ASSERT_EQ(now->tm_mday, data.getGiorni());
-    ASSERT_EQ(now->tm_mon, data.getMesi());
+    ASSERT_EQ(now->tm_mon + 1, data.getMesi());
     ASSERT_EQ(now->tm_year + 1900, data.getAnni());
 }
 
@@ -93,5 +93,5 @@ TEST(Data, dataToString){
     Data data;
     ASSERT_EQ("10 / 10 / 2010", data.dataToString());
     data.setVisualizzazione(2);
-    ASSERT_EQ(" giorno: 10 mese: 10 anno: 2010", data.dataToString());
+    ASSERT_EQ("10.10.2010", data.dataToString());
 }

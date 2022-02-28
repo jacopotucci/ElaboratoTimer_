@@ -80,5 +80,5 @@ TEST(Ora, OraToString){
     ora.setVisualizzazione(1);
     ASSERT_EQ("10:10:10", ora.oraToString());
     ora.setVisualizzazione(2);
-    ASSERT_EQ("10 ore 10 minuti 10 secondi", ora.oraToString());
+    ASSERT_EQ("10 ore 10 min 10 sec", ora.oraToString());
 }
