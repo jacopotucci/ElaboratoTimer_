@@ -5,8 +5,6 @@
 #ifndef ELABORATOTIMER__OBSERVER_H
 #define ELABORATOTIMER__OBSERVER_H
 
-#include "Subject.h"
-
 class Observer {
 public:
     virtual ~Observer() = default;

@@ -5,7 +5,6 @@
 #ifndef ELABORATOTIMER__SUBJECT_H
 #define ELABORATOTIMER__SUBJECT_H
 
-class Observer;
 #include "Observer.h"
 
 class Subject {
