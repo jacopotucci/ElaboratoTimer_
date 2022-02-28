@@ -8,7 +8,6 @@ Display::Display(Timer *tm) : subject(tm) {
     min = sec = ore = 0;
     data = Data();
     ora = Ora();
-    thread = new ThreadClass(subject);
     info = fine = false;
     altezza = larghezza = altezzaTerminale = larghezzaTerminale = 0;
     Display::attach();
@@ -20,6 +19,7 @@ Display::~Display() {
 void Display::inizio() {
     initscr();
     curs_set(0);
+    thread = new ThreadClass(subject);
 
     keypad(stdscr, true);
     nodelay(stdscr, true);
