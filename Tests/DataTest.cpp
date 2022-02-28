@@ -44,6 +44,12 @@ TEST(Data, setAnno){
     ASSERT_EQ(2000, data.getAnni());
 }
 
+TEST(Data, setAnnoBisestile){
+    Data data(29, 2, 2000);
+    data.setAnni(2016);
+    ASSERT_EQ(2016, data.getAnni());
+}
+
 TEST(Data, eccezioniCostruttoreGiorni){
     ASSERT_THROW(Data data(32, 10, 2010), std::out_of_range);
 }
@@ -74,9 +80,19 @@ TEST(Data, eccezioneSetMesi){
     ASSERT_THROW(data.setMesi(13), std::out_of_range);
 }
 
+TEST(Data, eccezioneSetMesiConControlloGiorni){
+    Data data(30, 10, 2010);
+    ASSERT_THROW(data.setMesi(2), std::out_of_range); //mese con 28 giorni
+}
+
 TEST(Data, eccezioneSetAnni){
     Data data(10, 10, 2010);
     ASSERT_THROW(data.setAnni(-1), std::out_of_range);
+}
+
+TEST(Data, eccezioneSetAnniConControlloGiorni){
+    Data data(29, 02, 2016); //anno bisestile
+    ASSERT_THROW(data.setAnni(2015), std::out_of_range); //anno non bisestile
 }
 
 TEST(Data, setDataAttuale){
@@ -91,7 +107,7 @@ TEST(Data, setDataAttuale){
 
 TEST(Data, dataToString){
     Data data;
-    ASSERT_EQ("10 / 10 / 2010", data.dataToString());
+    ASSERT_EQ("10 / 10 / 2010", data.toString());
     data.setVisualizzazione(2);
-    ASSERT_EQ("10.10.2010", data.dataToString());
+    ASSERT_EQ("10.10.2010", data.toString());
 }
