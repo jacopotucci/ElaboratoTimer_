@@ -58,17 +58,17 @@ void Display::aggiornaDisplay() {
     mvwprintw(dataWindow, 2, 10, "DATA");
 
     ora.setOraAttuale();
-    oraString = ora.oraToString();
+    oraString = ora.toString();
 
     data.setDataAttuale();
-    dataString = data.dataToString();
+    dataString = data.toString();
 
     update();
     oraTimerToString();
 
-    mvwprintw(oraWindow, 5, (larghezza - oraString.length())/2 - 1, &oraString[0]);
-    mvwprintw(dataWindow, 5, (larghezza - dataString.length())/2 - 1, &dataString[0]);
-    mvwprintw(timerWindow, 5, (larghezza - timerString.length())/2 - 1, &timerString[0]);
+    mvwprintw(oraWindow, 5, (larghezza - (int)oraString.length())/2 - 1, &oraString[0]);
+    mvwprintw(dataWindow, 5, (larghezza - (int)dataString.length())/2 - 1, &dataString[0]);
+    mvwprintw(timerWindow, 5, (larghezza - (int)timerString.length())/2 - 1, &timerString[0]);
 
 
     if(subject->getSecondiTimer()==0 && subject->getMinutoTimer() == 0 && subject->getOraTimer() == 0) {
