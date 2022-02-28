@@ -33,7 +33,7 @@ public:
 
     void setOraAttuale();
 
-    std::string oraToString() const; //trasforma l'ora in una stringa da passare al display
+    std::string toString() const; //trasforma l'ora in una stringa da passare al display
 
 private:
     int secondi, minuti, ore, visualizzazione;

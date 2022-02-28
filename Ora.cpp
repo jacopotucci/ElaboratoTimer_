@@ -71,7 +71,7 @@ void Ora::setOraAttuale() {
     setOre(now->tm_hour);
 }
 
-std::string Ora::oraToString() const{
+std::string Ora::toString() const{
     std::string controlloOra, oraString;
     switch (visualizzazione) {
         case 1:
